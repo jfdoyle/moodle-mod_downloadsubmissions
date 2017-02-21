@@ -92,7 +92,8 @@ class mod_downloadsubmissions extends assign {
 					$prefix = clean_filename($prefix . '_' . $this->get_uniqueid_for_user($userid));
 				}
 				if ($submission) {
-					$downloadasfolders = get_user_preferences('assign_downloadasfolders', 1);
+					// Local variance vs. 3.1 core - do not download individual folders
+					$downloadasfolders = false; //get_user_preferences('assign_downloadasfolders', 1);
 					foreach ($this->submissionplugins as $plugin) {
 						if ($plugin->is_enabled() && $plugin->is_visible()) {
 							if ($downloadasfolders) {
@@ -175,10 +176,12 @@ function dls_handle_event($eventdata) {
 	global $DB, $CFG;
 	$dls = new mod_downloadsubmissions();
 
-	if ($data->operation == 'downloadselected') {
-		$this->download_by_user($userlist);
+	if ($eventdata->operation == 'downloadselected') {
+		$users = $eventdata->selectedusers;
+		$userlist = explode(',', $users);
+		$dls->download_by_user($userlist);
 	} else {
-		$this->download_by_user();
+		$dls->download_by_user();
 	}
 }
 
