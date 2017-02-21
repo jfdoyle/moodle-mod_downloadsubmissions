@@ -93,7 +93,7 @@ class mod_downloadsubmissions extends assign {
                 }
                 if ($submission) {
                     // Local variance vs. 3.1 core - do not download individual folders
-                    $downloadasfolders = false; // get_user_preferences('assign_downloadasfolders', 1)
+                    $downloadasfolders = false; // get_user_preferences('assign_downloadasfolders', 1).
                     foreach ($this->submissionplugins as $plugin) {
                         if ($plugin->is_enabled() && $plugin->is_visible()) {
                             if ($downloadasfolders) {
@@ -154,7 +154,7 @@ class mod_downloadsubmissions extends assign {
             $result .= $this->get_renderer()->render($header);
             $result .= $this->get_renderer()->notification(get_string('nosubmission', 'assign'));
             $url = new moodle_url('/mod/assign/view.php', array('id' => $this->get_course_module()->id,
-                    'action' =>'grading'));
+                    'action' => 'grading'));
             $result .= $this->get_renderer()->continue_button($url);
             $result .= $this->view_footer();
         } else if ($zipfile = $this->pack_files($filesforzipping)) {
