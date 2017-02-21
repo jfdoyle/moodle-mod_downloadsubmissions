@@ -26,17 +26,17 @@ require_once($CFG->dirroot . '/mod/assign/locallib.php');
  */
 class mod_downloadsubmissions extends assign {
 
- public function get_name() {
-  return get_string('file', 'mod_downloadsubmissions');
- }
+    public function get_name() {
+        return get_string('file', 'mod_downloadsubmissions');
+    }
 
 
- /**
-  * Download a zip file of all assignment submissions by user.
-  *
-  * @param array $userids Array of user ids to download assignment submissions in a zip file
-  * @return string - If an error occurs, this will contain the error page.
-  */
+    /**
+     * Download a zip file of all assignment submissions by user.
+     *
+     * @param array $userids Array of user ids to download assignment submissions in a zip file
+     * @return string - If an error occurs, this will contain the error page.
+    */
     protected function download_by_user($userids = false) {
         global $CFG, $DB;
         // More efficient to load this here.
@@ -93,7 +93,7 @@ class mod_downloadsubmissions extends assign {
                 }
                 if ($submission) {
                     // Local variance vs. 3.1 core - do not download individual folders
-                    $downloadasfolders = false; //get_user_preferences('assign_downloadasfolders', 1);
+                    $downloadasfolders = false; // get_user_preferences('assign_downloadasfolders', 1)
                     foreach ($this->submissionplugins as $plugin) {
                         if ($plugin->is_enabled() && $plugin->is_visible()) {
                             if ($downloadasfolders) {
@@ -111,15 +111,15 @@ class mod_downloadsubmissions extends assign {
                                             '_' .
                                             $type .
                                             '_');
-                                            if ($type == 'file') {
-                                                $pathfilename = $prefixedfilename . $file->get_filepath() . $zipfilename;
-                                            } else if ($type == 'onlinetext') {
-                                                $pathfilename = $prefixedfilename . '/' . $zipfilename;
-                                            } else {
-                                                $pathfilename = $prefixedfilename . '/' . $zipfilename;
-                                            }
-                                            $pathfilename = clean_param($pathfilename, PARAM_PATH);
-                                            $filesforzipping[$pathfilename] = $file;
+                                    if ($type == 'file') {
+                                        $pathfilename = $prefixedfilename . $file->get_filepath() . $zipfilename;
+                                    } else if ($type == 'onlinetext') {
+                                        $pathfilename = $prefixedfilename . '/' . $zipfilename;
+                                    } else {
+                                        $pathfilename = $prefixedfilename . '/' . $zipfilename;
+                                    }
+                                    $pathfilename = clean_param($pathfilename, PARAM_PATH);
+                                    $filesforzipping[$pathfilename] = $file;
                                 }
                             } else {
                                 // Create a single folder for all users of all assignment plugins.
@@ -153,8 +153,8 @@ class mod_downloadsubmissions extends assign {
                     get_string('downloadall', 'assign'));
             $result .= $this->get_renderer()->render($header);
             $result .= $this->get_renderer()->notification(get_string('nosubmission', 'assign'));
-            $url = new moodle_url('/mod/assign/view.php', array('id'=>$this->get_course_module()->id,
-                    'action'=>'grading'));
+            $url = new moodle_url('/mod/assign/view.php', array('id' => $this->get_course_module()->id,
+                    'action' =>'grading'));
             $result .= $this->get_renderer()->continue_button($url);
             $result .= $this->view_footer();
         } else if ($zipfile = $this->pack_files($filesforzipping)) {
