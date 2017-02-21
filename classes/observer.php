@@ -23,15 +23,13 @@
 defined('MOODLE_INTERNAL') || die();
 
 class mod_download_submissions_observer {
-    /**
+     /**
      * Observer function to handle the all submissions downloaded event in mod_assign.
      * @param \mod_assign\event\all_submissions_downloaded $event
      */
-    public static function download_initiated(
-    	\mod_assign\event\all_submissions_downloaded $event) {
+    public static function download_initiated(\mod_assign\event\all_submissions_downloaded $event) {
         global $CFG;
         require_once($CFG->dirroot . '/local/mod_downloadsubmissions/lib.php');
         dls_handle_event($event->get_data());
     }
-   
 }

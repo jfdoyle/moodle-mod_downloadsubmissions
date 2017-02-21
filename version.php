@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
-* @package	mod_downloadsubmissions
-* @copyright 2017, John Doyle, Syllametrics <jdoyle@syllametrics.com>
-* @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+ * @package	mod_downloadsubmissions
+ * @copyright 2017, John Doyle, Syllametrics <jdoyle@syllametrics.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -30,5 +30,5 @@ $plugin->maturity  = MATURITY_ALPHA;
 $plugin->release   = 'v0.1';
 
 $plugin->dependencies = array(
-		'mod_assign' => 2014111000,
+        'mod_assign' => 2014111000,
 );

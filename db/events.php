@@ -14,15 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 /**
-* Event observers for the Download Submissions plugin.
-*
-* @package    mod_downloadsubmissions
-* @copyright  2017 onwards John Doyle, Syllametrics <jdoyle@syllametrics.com>
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+ * Event observers for the Download Submissions plugin.
+ *
+ * @package    mod_downloadsubmissions
+ * @copyright  2017 onwards John Doyle, Syllametrics <jdoyle@syllametrics.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+defined('MOODLE_INTERNAL') || die();
+
 $observers = array (
-		array(
-				'eventname' => '\mod_assign\event\all_submissions_downloaded',
-				'callback' => 'mod_download_submissions_observer::download_initiated'
-		)
+    array(
+            'eventname' => '\mod_assign\event\all_submissions_downloaded',
+            'callback' => 'mod_download_submissions_observer::download_initiated'
+        )
 );
