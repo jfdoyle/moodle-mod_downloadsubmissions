@@ -36,7 +36,7 @@ class mod_downloadsubmissions extends assign {
      *
      * @param array $userids Array of user ids to download assignment submissions in a zip file
      * @return string - If an error occurs, this will contain the error page.
-    */
+     */
     protected function download_by_user($userids = false) {
         global $CFG, $DB;
         // More efficient to load this here.
@@ -93,7 +93,8 @@ class mod_downloadsubmissions extends assign {
                 }
                 if ($submission) {
                     // Local variance vs. 3.1 core - do not download individual folders
-                    $downloadasfolders = false; // get_user_preferences('assign_downloadasfolders', 1).
+                    // False replaces get_user_preferences('assign_downloadasfolders', 1).
+                    $downloadasfolders = false;
                     foreach ($this->submissionplugins as $plugin) {
                         if ($plugin->is_enabled() && $plugin->is_visible()) {
                             if ($downloadasfolders) {
