@@ -93,7 +93,6 @@ class mod_downloadsubmissions extends assign {
                 }
                 if ($submission) {
                     // Local variance vs. 3.1 core - do not download individual folders
-                    // False replaces get_user_preferences('assign_downloadasfolders', 1).
                     $downloadasfolders = false;
                     foreach ($this->submissionplugins as $plugin) {
                         if ($plugin->is_enabled() && $plugin->is_visible()) {
