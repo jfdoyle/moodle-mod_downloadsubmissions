@@ -92,7 +92,7 @@ class mod_downloadsubmissions extends assign {
                     $prefix = clean_filename($prefix . '_' . $this->get_uniqueid_for_user($userid));
                 }
                 if ($submission) {
-                    // Local variance vs. 3.1 core - do not download individual folders
+                    // Local variance vs. 3.1 core - do not download individual folders.
                     $downloadasfolders = false;
                     foreach ($this->submissionplugins as $plugin) {
                         if ($plugin->is_enabled() && $plugin->is_visible()) {
